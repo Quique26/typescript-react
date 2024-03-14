@@ -1,4 +1,4 @@
-import fs from "fs";
+
 import {Sub, SubsResponseFromApi} from '../components/types.d';
 import subsData from '../informacion.json'
 export const getAllSubs = () => {
@@ -17,7 +17,8 @@ const mapFromApiToSubs = (apiResponse: SubsResponseFromApi):
         profileUrl: avatar,
         nick,
         description,
-        sexo
+        sexo: sex,
+        privacidad: privacyPolicy,
         } = subFromApi
 
         return {
@@ -25,7 +26,8 @@ const mapFromApiToSubs = (apiResponse: SubsResponseFromApi):
         description,
         avatar,
         subMonths,
-        sexo
+        sex,
+        privacyPolicy
         }
     })
 }

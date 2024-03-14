@@ -50,3 +50,13 @@ form input {
   padding: 4px 6px;
   margin: 0 0 4px;
 }
+
+h3{
+  text-align: right;
+  margin: 0;
+  cursor: pointer;
+}
+
+h3:hover{
+  color: red;
+}

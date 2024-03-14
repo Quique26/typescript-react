@@ -3,7 +3,8 @@ export interface Sub{
     avatar: string
     subMonths: number
     description?: string
-    sexo: string
+    sex: string
+    privacyPolicy?: any
 }
 
 export type SubsResponseFromApi = Array<{
@@ -12,13 +13,14 @@ export type SubsResponseFromApi = Array<{
     profileUrl: string
     description: string
     sexo: string
+    privacidad: any
 }>
 
 export interface IMGObject {
     [key: number]: string;
 }
 
-export const IMGHombre: IMGObject = {
+export const IMGMan: IMGObject = {
     1: "https://img.freepik.com/vector-gratis/avatar-personaje-empresario-aislado_24877-60111.jpg",
     2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMGpptnKrAOOz8ZSKCARE_FlX9hgCymbXhdQ&usqp=CAU",
     3: "https://previews.123rf.com/images/yupiramos/yupiramos1708/yupiramos170831273/84892638-icono-del-avatar-hombre-sobre-ilustraci%C3%B3n-de-vectores-de-fondo-blanco.jpg",
@@ -27,7 +29,7 @@ export const IMGHombre: IMGObject = {
 
 }
 
-export const  IMGMujer: IMGObject = {
+export const  IMGWoman: IMGObject = {
     1: "https://static.vecteezy.com/system/resources/previews/001/993/889/non_2x/beautiful-latin-woman-avatar-character-icon-free-vector.jpg",
     2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-ddwT9XSpbzDvua0Kmepfg4AfB0eQ69Tkqw&usqp=CAU",
     3: "https://previews.123rf.com/images/yupiramos/yupiramos1709/yupiramos170910660/85494557-avatar-mujer-retrato-de-la-mujer-ilustraci%C3%B3n-imagen-del-vector.jpg",

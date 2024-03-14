@@ -1,28 +1,29 @@
-import { IMGHombre, IMGMujer, Sub } from "./types.d";
+import { Sub } from "./types.d";
 
 
 interface Props{
-    subs: Array<Sub> 
+    subs: Array<Sub>;
+    setSubs: React.Dispatch<React.SetStateAction<Sub[]>>
+    onDeleteSub: (nick: string) => void
+    updateSubsNumber: React.Dispatch<React.SetStateAction<number>>; // Agrega la función de actualización de SubsNumber
+
 }
 
-const List = ({subs}: Props) => {
+const List = ({subs, setSubs, onDeleteSub, updateSubsNumber }: Props) => {
+  const handleDeleteSub = (nick: string) => {
+    setSubs(subs => subs.filter(sub => sub.nick !== nick));
+    updateSubsNumber(SubsNumber => SubsNumber - 1); // Llama a la función de actualización de SubsNumber
+  };
+  
     const renderList = (): JSX.Element[] => { 
-        const renderAvatar = (sub: Sub): string => {
-          if (sub.sexo === "Hombre") {
-              const randomIndex = Math.floor(Math.random() * Object.keys(IMGHombre).length) + 1;
-              return (IMGHombre[randomIndex] as string); // Cast necesario porque TypeScript no sabe que es una URL
-          } else {
-              const randomIndex = Math.floor(Math.random() * Object.keys(IMGMujer).length) + 1;
-              return (IMGMujer[randomIndex] as string); // Cast necesario porque TypeScript no sabe que es una URL
-          }
-        };
         return subs.map (sub => {
           return (
             <li key={sub.nick}>
-              <img src={typeof sub.avatar === "number" ? renderAvatar(sub) : sub.avatar as string} alt={`Avatar for ${sub.nick}`} />
+              <h3 onClick={() => handleDeleteSub(sub.nick)}>X</h3>
+              <img src= {sub.avatar} alt={`Avatar for ${sub.nick}`} />
               <h4>{sub.nick} (<small>{sub.subMonths}</small>)</h4>
               <p>{sub.description?.substring(0, 100)}</p>
-              <p>{sub.sexo}</p>
+              <p>{sub.sex}</p>
             </li>
           );
         });
