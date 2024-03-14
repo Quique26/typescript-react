@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 import './App.css';
 import List from './components/List';
 import Form from './components/Form';
-import {Sub} from './types';
+import {Sub} from './components/types.d';
 import {getAllSubs} from './services/getAllSubs'
 
 

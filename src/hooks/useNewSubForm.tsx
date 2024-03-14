@@ -1,5 +1,5 @@
 import { useReducer } from "react"
-import {Sub} from '../types'
+import {Sub} from '../components/types.d'
 
 interface FormState{
     inputValues: Sub
@@ -19,7 +19,8 @@ const INITIAL_STATE = {
     nick: '',
     subMonths: 0,
     avatar: '',
-    description: ''
+    description: '',
+    sexo: ''
 }
 
 const formReducer = (state: FormState["inputValues"], action: FormReducerAction) => {

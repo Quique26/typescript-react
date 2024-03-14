@@ -1,5 +1,5 @@
 import useNewSubForm from '../hooks/useNewSubForm'
-import {Sub} from '../types'
+import {Sub} from './types.d'
 
 interface FormProps{
     onNewSub: (newSub: Sub) => void
@@ -13,7 +13,7 @@ const Form = ({ onNewSub }: FormProps) => {
         dispatch({ type: "clear"})
     }
 
-    const handleChange = (evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const {name, value} = evt.target
         
         dispatch({
@@ -36,6 +36,11 @@ const Form = ({ onNewSub }: FormProps) => {
                 <input onChange={handleChange} value={inputValues.subMonths} type="text" name="subMonths" placeholder="subMonths" />
                 <input onChange={handleChange} value={inputValues.avatar} type="text" name="avatar" placeholder="avatar" />
                 <textarea onChange={handleChange} value={inputValues.description}  name="description" placeholder="description" />
+                <select onChange={handleChange} value={inputValues.sexo} name='sexo'>
+                    <option value=""></option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                </select>
                 <button onClick={handleClear} type='button'> Clear the form</button>
                 <button type='submit'>Save new sub!</button>
             </form>

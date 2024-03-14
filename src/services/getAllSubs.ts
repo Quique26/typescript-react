@@ -1,14 +1,12 @@
-import axios from "axios";
-import {Sub, SubsResponseFromApi} from '../types';
-
+import fs from "fs";
+import {Sub, SubsResponseFromApi} from '../components/types.d';
+import subsData from '../informacion.json'
 export const getAllSubs = () => {
     return fetchSubs().then(mapFromApiToSubs)
 }
 
 const fetchSubs = async (): Promise<SubsResponseFromApi> => {
-    const response = await axios
-      .get('http://localhost:3001');
-    return response.data
+    return Promise.resolve(subsData);
 }
 
 const mapFromApiToSubs = (apiResponse: SubsResponseFromApi):
@@ -18,14 +16,16 @@ const mapFromApiToSubs = (apiResponse: SubsResponseFromApi):
         months: subMonths,
         profileUrl: avatar,
         nick,
-        description
+        description,
+        sexo
         } = subFromApi
 
         return {
         nick, 
         description,
         avatar,
-        subMonths
+        subMonths,
+        sexo
         }
     })
 }
